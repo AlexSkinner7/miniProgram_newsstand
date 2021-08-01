@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "episode-cmp":"/components/episode/index"
+  }
+}
