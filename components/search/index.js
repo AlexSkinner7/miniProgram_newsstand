@@ -23,7 +23,6 @@ Component({
     more: {
       type: String,
       observer: 'loadMore'
-      // true, true, true,
     }
   },
 
