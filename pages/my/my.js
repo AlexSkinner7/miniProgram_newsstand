@@ -25,7 +25,7 @@ Page({
   },
 
   onShow(options) {
-    this.userAuthorized2()
+    this.userAuthorized()
     this.getMyBookCount()
     this.getMyFavor()
     // wx.getUserInfo({
@@ -83,7 +83,19 @@ Page({
 
 
   userAuthorized() {
-    wx.getSetting({
+    wx.login({
+      success (res) {
+        if (res.code) {
+          //发起网络请求
+          console.log('code:'+res.code);
+        } else {
+          console.log('登录失败！' + res.errMsg)
+        }
+      }
+    })
+
+    wx.getUserProfile({
+      desc: '用于完善会员资料',
       success: data => {
         if (data.authSetting['scope.userInfo']) {
           wx.getUserInfo({
@@ -92,18 +104,20 @@ Page({
                 authorized: true,
                 userInfo: data.userInfo
               })
+              
             }
           })
         }
       }
     })
+
+   
   },
 
 
 
   onGetUserInfo(event) {
-    const userInfo = event.detail.userInfo
-    if (userInfo) {
+    if (this.data.userInfo) {
       this.setData({
         userInfo,
         authorized: true

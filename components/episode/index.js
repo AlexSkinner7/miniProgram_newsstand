@@ -30,6 +30,10 @@ Component({
   lifetimes: {
     attached: function () {
       let date = new Date();
+      
+      console.log(Date.parse(date + " "));
+
+
       let year = date.getFullYear();
       let month = date.getMonth();
       this.setData({
