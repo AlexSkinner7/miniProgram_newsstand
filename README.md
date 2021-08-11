@@ -71,6 +71,10 @@ px：所有机型固定只存，适用于文字等
   <img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210704210824945.png" alt="image-20210704210824945" style="zoom:50%;" />
 
 - bug
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/main
   - startWith，code不是字符串
   - 导入用相对路径
 
@@ -556,6 +560,7 @@ str.replace(/\\n/g,'\n')
     - 监听总控开关
 
       attached内部调用
+<<<<<<< HEAD
     
     - 调用onPlay、onPause等api
     
@@ -577,6 +582,29 @@ str.replace(/\\n/g,'\n')
     
       的_recoverStatus()函数设置成false
     
+=======
+
+    - 调用onPlay、onPause等api
+
+    <img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210706232748436.png" alt="image-20210706232748436" style="zoom:50%;" />
+
+    - 问题：当点击play按钮时图片先变成播放又变成停止
+
+      分析如下：
+
+      ①当前页面有两个元素被监控，分别是player-img和mMgr
+
+      <img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210709214939363.png" alt="image-20210709214939363" style="zoom:50%;" />
+
+      <img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210709214924937.png" alt="image-20210709214924937" style="zoom:50%;" />
+
+      ②如下图，点击player-img触发onPlay函数，进行mMgr的src赋值，注意！！！该赋值触发了被监听的mMgr.onPlay函数
+
+      ，而该函数又调用了_recoverStatus()函数。此时playing参数为false，因为mMgr.onPlay函数可能由于微任务的原因被调到onPlay函数执行完后执行。因此，playing先被onPlay函数设置成true，在被mMgr.onPlay函数
+
+      的_recoverStatus()函数设置成false
+
+>>>>>>> refs/remotes/origin/main
       <img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210709214751322.png" alt="image-20210709214751322" style="zoom:50%;" />
 
 
@@ -780,4 +808,8 @@ key提高渲染效率
 
 ### export
 
+<<<<<<< HEAD
 <img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210704203409721.png" alt="image-20210704203409721" style="zoom:50%;" />
+=======
+<img src="C:\Users\Skinner\AppData\Roaming\Typora\typora-user-images\image-20210704203409721.png" alt="image-20210704203409721" style="zoom:50%;" />
+>>>>>>> refs/remotes/origin/main
